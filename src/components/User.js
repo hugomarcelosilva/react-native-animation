@@ -3,16 +3,20 @@ import React, { Component } from 'react';
 
 /* Presentational */
 import {
+  Animated,
   View,
   Text,
   Image,
   Alert,
   StyleSheet,
   Dimensions,
+  PanResponder,
   TouchableWithoutFeedback,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   userContainer: {
@@ -68,26 +72,98 @@ const styles = StyleSheet.create({
 });
 
 export default class User extends Component {
+  constructor() {
+    super();
+    this.state = {
+      opacity: new Animated.Value(0),
+      offset: new Animated.ValueXY({ x: 0, y: 50 }),
+    };
+  }
+
+  componentWillMount() {
+    this._panResponder = PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+
+      onPanResponderMove: Animated.event([
+        null,
+        {
+          dx: this.state.offset.x,
+          dy: this.state.offset.y,
+        },
+      ]),
+
+      onPanResponderRelease: () => {
+        if (this.state.offset.x._value < -200) Alert.alert('Deleted');
+
+        Animated.spring(this.state.offset.x, {
+          toValue: 0,
+          bounciness: 10,
+        }).start();
+      },
+
+      onPanResponderTerminate: () => {
+        Animated.spring(this.state.offset.x, {
+          toValue: 0,
+          bounciness: 10,
+        }).start();
+      },
+    });
+  }
+
+  componentDidMount() {
+    Animated.parallel([
+      Animated.spring(this.state.offset.y, {
+        toValue: 0,
+        speed: 5,
+        bounciness: 20,
+      }),
+      Animated.timing(this.state.opacity, {
+        toValue: 1,
+        duration: 500,
+      }),
+    ]).start();
+  }
+
   render() {
     const { user } = this.props;
 
     return (
-      <TouchableWithoutFeedback onPress={this.props.onPress}>
-        <View style={styles.userContainer}>
-          <Image style={styles.thumbnail} source={{ uri: user.thumbnail }} />
+      <Animated.View
+        {...this._panResponder.panHandlers}
+        style={[
+          {
+            transform: [
+              ...this.state.offset.getTranslateTransform(),
+              {
+                rotateZ: this.state.offset.x.interpolate({
+                  inputRange: [width * -1, width],
+                  outputRange: ['-50deg', '50deg'],
+                }),
+              },
+            ],
+          },
+          { opacity: this.state.opacity },
+        ]}
+      >
+        <TouchableWithoutFeedback onPress={this.props.onPress}>
+          <View style={styles.userContainer}>
+            <Image style={styles.thumbnail} source={{ uri: user.thumbnail }} />
 
-          <View style={[styles.infoContainer, { backgroundColor: user.color }]}>
-            <View style={styles.bioContainer}>
-              <Text style={styles.name}>{user.name.toUpperCase()}</Text>
-              <Text style={styles.description}>{user.description}</Text>
-            </View>
-            <View style={styles.likesContainer}>
-              <Icon name="heart" size={12} color="#FFF" />
-              <Text style={styles.likes}>{user.likes}</Text>
+            <View
+              style={[styles.infoContainer, { backgroundColor: user.color }]}
+            >
+              <View style={styles.bioContainer}>
+                <Text style={styles.name}>{user.name.toUpperCase()}</Text>
+                <Text style={styles.description}>{user.description}</Text>
+              </View>
+              <View style={styles.likesContainer}>
+                <Icon name="heart" size={12} color="#FFF" />
+                <Text style={styles.likes}>{user.likes}</Text>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </Animated.View>
     );
   }
 }
