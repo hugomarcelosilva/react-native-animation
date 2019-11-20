@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>8BACF0DB-A630-4ACF-AAA1-FE21AF4FFC7B</key>
+		<key>95288062-8D3C-4F01-BFFC-E9A1D13A45FA</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,13 +15,13 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>8BACF0DB-A630-4ACF-AAA1-FE21AF4FFC7B.xcactivitylog</string>
+			<string>95288062-8D3C-4F01-BFFC-E9A1D13A45FA.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>W</string>
+				<string>S</string>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>animation project</string>
@@ -32,13 +32,13 @@
 			<key>signature</key>
 			<string>Building workspace animation with scheme animation and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>595943005.34496105</real>
+			<real>595953996.35535395</real>
 			<key>timeStoppedRecording</key>
-			<real>595943176.28261495</real>
+			<real>595953998.45196497</real>
 			<key>title</key>
 			<string>Building workspace animation with scheme animation and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>8BACF0DB-A630-4ACF-AAA1-FE21AF4FFC7B</string>
+			<string>95288062-8D3C-4F01-BFFC-E9A1D13A45FA</string>
 		</dict>
 	</dict>
 </dict>
