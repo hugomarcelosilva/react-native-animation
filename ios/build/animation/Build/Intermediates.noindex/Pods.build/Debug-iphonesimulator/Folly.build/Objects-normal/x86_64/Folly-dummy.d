@@ -1,3 +1,0 @@
-dependencies: \
-  /Users/admin/Documents/Projetos/react-native-animation/ios/Pods/Target\ Support\ Files/Folly/Folly-dummy.m \
-  /Users/admin/Documents/Projetos/react-native-animation/ios/Pods/Target\ Support\ Files/Folly/Folly-prefix.pch

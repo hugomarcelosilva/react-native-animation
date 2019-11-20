@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     es6: true,
+    jest: true
   },
   extends: [
     'airbnb',
@@ -32,6 +33,11 @@ module.exports = {
         extensions: ['.jsx', '.js']
       }
     ],
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_"}],
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    camelcase: "off",
+    "no-console": ["error", {allow: ["tron"]}],
   },
 };
