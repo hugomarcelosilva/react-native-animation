@@ -1,5 +1,5 @@
 {
-  "name": "animations",
+  "name": "animation",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,9 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.0.0",
-    "react-native": "0.51.0",
-    "react-native-vector-icons": "^4.4.2",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
+    "react-native-vector-icons": "^6.6.0",
     "reactotron-react-native": "^4.0.2"
   },
   "devDependencies": {
