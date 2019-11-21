@@ -1,15 +1,16 @@
-# Github React Native
+# Animation React JS
 
-Esse projeto utiliza React Native para criar a consulta de usuários e repositórios favoritos do GitHub.
+Esse projeto utiliza animação em React JS para listar os usuários de uma aplicação.
 
 # Demo
 
-![Github ReactJ Native - Animated gif demo](demo/demo.gif)
+![Animation React JS - Animated gif demo](demo/demo.gif)
 
 ## Technologies Used
 * HTML
 * CSS
-* React Native 
+* React JS
+* Animated
 
 ## License
 
